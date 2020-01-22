@@ -6,6 +6,7 @@ const progressBar = player.querySelector('.progress__filled');
 const toggle = player.querySelector('.toggle');
 const skipButtons = player.querySelectorAll('[data-skip]');
 const ranges = player.querySelectorAll('.player__slider');
+const full = player.querySelector('.full__button');
 let mousedown = false;
 
 //Build Function
@@ -60,6 +61,14 @@ skipButtons.forEach(e => {
 ranges.forEach(e => {
 //e.addEventListener('change',handleRangeUpdate);
 e.addEventListener('mousemove',handleRangeUpdate);
+});
+
+full.addEventListener('click', ()=>{
+    if(document.fullscreenElement === player){
+        document.exitFullscreen();
+    } else {
+        player.requestFullscreen();
+    }
 });
 
 progress.addEventListener('click', scrub);
